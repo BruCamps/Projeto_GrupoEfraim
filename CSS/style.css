@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Racing+Sans+One&family=Work+Sans:ital,wght@0,700;0,800;0,900;1,900&display=swap');
+
+:root {
+    --white: white;
+    --yellow: #FE9900;
+    --red: #FF1901;
+    --blue-logo: #060E4F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    color: var(--white);
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent; /* or add it to the track */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #737373;
+    border-radius: 2px;
+}
+
+
+/* NavBar - Barra de Navegação */
+
+nav {
+    backdrop-filter: blur(5rem);
+    background-color: #00000015; /* Cor de fundo da barra de navegação */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+}
+
+.navbar-brand, .nav-link {
+    text-decoration: none;
+}
+
+.navbar-brand {
+    padding: .2rem 1rem;
+}
+
+.signup {
+    background-color: var(--yellow);
+    border-radius: .5rem;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-image: url(/IMGs/logo.jpg);
+    border-radius: 50%; /* Torna a logo redonda */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* Header - Cabeçalho */
+
+.blue-section {
+    background-color: var(--blue-logo); /* Cor de fundo azul */
+    height: 100vh; /* Altura da seção azul */
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-circle {
+    width: 30rem;
+    height: 30rem;
+    filter: blur(2rem);
+    background: linear-gradient(var(--yellow), var(--red), var(--blue-logo)); /* Degradê laranja para azul */
+    border-radius: 50%; /* Torna o círculo redondo */
+    position: absolute;
+    top: 70vh; /* Posiciona o círculo no meio da seção azul */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-image {
+    width: 90%; /* Tamanho da imagem 90% do círculo */
+    height: auto;
+    border-radius: 50%; /* Torna a imagem redonda */
+}
+
+
