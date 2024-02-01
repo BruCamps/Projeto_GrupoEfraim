@@ -37,13 +37,12 @@ body::-webkit-scrollbar-thumb {
 
 nav {
     backdrop-filter: blur(5rem);
-    background-color: #00000015; /* Cor de fundo da barra de navegação */
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     width: 100%;
     top: 0;
 }
@@ -85,24 +84,41 @@ nav {
 
 .blue-section {
     background-color: var(--blue-logo); /* Cor de fundo azul */
+    width: 100%;
     height: 100vh; /* Altura da seção azul */
     position: relative;
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .gradient-circle {
-    width: 30rem;
-    height: 30rem;
+    width: 45rem;
+    height: 45rem;
     filter: blur(2rem);
     background: linear-gradient(var(--yellow), var(--red), var(--blue-logo)); /* Degradê laranja para azul */
     border-radius: 50%; /* Torna o círculo redondo */
     position: absolute;
-    top: 70vh; /* Posiciona o círculo no meio da seção azul */
+    top: 75vh; /* Posiciona o círculo no meio da seção azul */
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.stroke-circle {
+    width: 90rem;
+    height: 90rem;
+    border: 5rem red; /* Degradê laranja para azul */
+    border-radius: 50%; /* Torna o círculo redondo */
+    position: absolute;
+    top: 75vh; /* Posiciona o círculo no meio da seção azul */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 25;
 }
 
 .circle-image {
@@ -111,4 +127,79 @@ nav {
     border-radius: 50%; /* Torna a imagem redonda */
 }
 
+.img-model {
+    position: absolute;
+    top: 55vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    height: 50rem;
+}
+
+/* About - Sobre */
+
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10rem;
+}
+
+.about-container {
+    display: flex;
+    width: 100%;
+    height: 10rem;
+    margin: 8rem 0;
+}
+
+#unico {
+    margin-right: 2rem;
+}
+
+.btn-about-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.text, span, h1 {
+    color: #060E4F;
+}
+
+.text {
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+span {
+    font-size: 2rem;
+}
+
+.img {
+    padding: 8rem 10rem;
+    background: #737373;
+}
+
+.misters {
+    width: 100%;
+}
+
+.misters-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container {
+    padding: 10rem 8rem;
+    margin: 2rem 1rem;
+    background: #737373;
+}
 
