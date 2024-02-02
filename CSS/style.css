@@ -83,6 +83,7 @@ nav {
     display: flex;
     gap: 1.5rem;
     align-items: center;
+    margin-left: 35px;
 }
 
 /* Cada Link da Nav */
@@ -106,6 +107,7 @@ nav {
     background-image: url(../IMGs/logop.png);
     background-size: cover;
     background-repeat: no-repeat;
+    margin-right: 20px;
 }
 
 
