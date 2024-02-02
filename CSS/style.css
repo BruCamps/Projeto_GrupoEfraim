@@ -2,10 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Racing+Sans+One&family=Work+Sans:ital,wght@0,700;0,800;0,900;1,900&display=swap');
 
 :root {
-    --white: white;
-    --yellow: #FE9900;
-    --red: #FF1901;
-    --blue-logo: #060E4F;
+    /* Paleta de Cores da Marca */
+    --clr-yellow-logo: #FE9900;
+    --clr-red-logo: #FF1901;
+    --clr-blue-logo: #060E4F;
+    
+    --clr-nav-font: white;
+    --clr-background: white;
+    --clr-body-font: #060E4F;
 }
 
 * {
@@ -16,59 +20,75 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    color: var(--white);
+    color: var(--clr-font);
     font-family: 'Poppins', sans-serif;
 }
 
-
-body::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color: transparent; /* or add it to the track */
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #737373;
-    border-radius: 2px;
+html {
+    scroll-behavior: smooth;
 }
 
 
-/* NavBar - Barra de Navegação */
+body {
 
+    background-color: var(--clr-background);
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: transparent; /* or add it to the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #737373;
+        border-radius: 2px;
+    }
+    
+}
+
+h1 {
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    margin-bottom: 5rem;
+}
+
+span {
+    font-size: 2rem;
+}
+
+h1, span, .about-text {
+    color: var(--clr-body-font);
+}
+
+
+/* ---- Nav Bar - Barra de Navegação ---- */
+
+
+/* Container da Nav */
 nav {
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     width: 100%;
     top: 0;
 }
 
-.navbar-brand, .nav-link {
-    text-decoration: none;
-}
-
-.navbar-brand {
-    padding: .2rem 1rem;
-}
-
-.signup {
-    background-color: var(--yellow);
-    border-radius: .5rem;
-}
-
+/* Container dos Links da Nav */
 .navbar-nav {
     display: flex;
     gap: 1.5rem;
     align-items: center;
 }
 
-.nav-item {
-    margin-right: 20px;
+/* Cada Link da Nav */
+.nav-link {
+    text-decoration: none;
 }
 
+/* Imagem da Logo */
 .logo {
     width: 50px;
     height: 50px;
@@ -79,26 +99,34 @@ nav {
 }
 
 
-/* Header - Cabeçalho */
+/* ---- Header - Cabeçalho ---- */
 
-.blue-section {
-    background-color: var(--blue-logo); /* Cor de fundo azul */
-    width: 100%;
-    height: 100vh; /* Altura da seção azul */
+
+/* Seção do Header */
+.header-section {
+    background-image: url();
+    min-width: 100%;
+    height: 100vh;
     position: relative;
-    background-attachment: fixed;
+    display: flex;
     overflow: hidden;
     margin-bottom: 2rem;
 }
 
+/* Gradiente Central */
 .gradient-circle {
     width: 45rem;
     height: 45rem;
     filter: blur(5rem);
-    background: linear-gradient(var(--yellow), var(--red), var(--blue-logo)); /* Degradê laranja para azul */
-    border-radius: 50%; /* Torna o círculo redondo */
+    background: 
+        linear-gradient(
+            var(--clr-yellow-logo), 
+            var(--clr-red-logo), 
+            var(--clr-blue-logo)
+        ); 
+    border-radius: 50%; 
     position: absolute;
-    top: 75vh; /* Posiciona o círculo no meio da seção azul */
+    top: 75vh;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -106,122 +134,89 @@ nav {
     align-items: center;
 }
 
-.gradient {
-    width: 40rem;
-    height: 40rem;  
-    filter: blur(10rem);
-    background: #1021A4;
-    border-radius: 50%; /* Torna o círculo redondo */
-    position: absolute;
-    top: 10vh; /* Posiciona o círculo no meio da seção azul */
-    left: 0;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.gradient-right {
-    width: 40rem;
-    height: 40rem;  
-    filter: blur(10rem);
-    background: #1021A4;
-    border-radius: 50%; /* Torna o círculo redondo */
-    position: absolute;
-    top: 90vh; /* Posiciona o círculo no meio da seção azul */
-    left: 100%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
+/* Círculo vazado */
 .stroke-circle {
     width: 68rem;
     height: 68rem;
-    border: 1.5rem rgba(0, 0, 255, 0.192) solid;
-    border-radius: 50%; /* Torna o círculo redondo */
-    position: absolute;
-    top: 75vh; /* Posiciona o círculo no meio da seção azul */
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 75vh; 
+    left: 50%;
     z-index: 25;
+    transform: translate(-50%, -50%);
+    border: 1.5rem rgba(0, 0, 255, 0.192) solid;
+    border-radius: 50%;
 }
 
-
-.circle-image {
-    width: 90%; /* Tamanho da imagem 90% do círculo */
-    height: auto;
-    border-radius: 50%; /* Torna a imagem redonda */
-}
-
+/* Imagem do Modelo */
 .img-model {
     position: absolute;
     top: 55vh;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 50;
+    z-index: 500;
     height: 50rem;
 }
 
-/* About - Sobre */
+
+/* ---- About - Sobre ---- */
 
 
+/* Seção do Sobre */
 .about-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 10rem;
+    padding: 8rem 10rem 10rem 10rem;
 }
 
+/* Container do Sobre */
 .about-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 10rem;
-    margin: 8rem 0;
+    margin: 10rem 0;
+    gap: 5rem;
 }
 
-#unico {
-    margin-right: 2rem;
-}
-
-.btn-about-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.text, span, h1 {
-    color: #060E4F;
-}
-
-.text {
+/* Parágrafos do Sobre */
+.about-text {
     font-size: 1.2rem;
+    margin: auto;
 }
 
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 5rem;
+/* Container das Imagens do Sobre */
+.img-container {
+    display: flex;
+    width: 40rem;
+    height: 25rem;
+    padding: 3rem;
+    background: radial-gradient(#1021A4, #060E4F);
+    border-radius: .8rem;
 }
 
-span {
-    font-size: 2rem;
+/* Imagens do Sobre */
+.img-container img {
+    width: 100%;
 }
 
-.img {
-    padding: 8rem 10rem;
-    background: #737373;
+/* Container com Fundo Laranja */
+.orange-bg {
+    background: radial-gradient(#FE9900, #FF1901);
 }
 
-.misters {
+
+/* ---- Misters E Miss ---- */
+
+
+/* Seção dos Misters  */
+.misters-section {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -229,6 +224,7 @@ span {
     align-items: center;
 }
 
+/* Container do Misters */
 .misters-container {
     width: 100%;
     display: flex;
@@ -236,9 +232,11 @@ span {
     align-items: center;
 }
 
-.img-container {
+/* Cards do Carrossel */
+.carousel-card {
     padding: 10rem 8rem;
     margin: 2rem 1rem;
     background: #737373;
 }
+
 
