@@ -91,8 +91,34 @@ nav {
     text-decoration: none;
     color: white;
     font-size: 1.05rem;
-}
 
+    position: relative;
+
+    &::before{
+        content: "";
+        position: absolute;
+        background-color: var(--clr-yellow-logo);
+
+        height: 4px;
+        width: 100%;
+        border-radius: 3px;
+        left: 0;
+        bottom: -5px;
+
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: 0.3s ease-in-out;
+    }
+
+    &:hover::before{
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+
+    &:hover{
+        color: rgb(252, 248, 235);
+    }
+}
 
 /* Elementos da Nav */
 
@@ -148,11 +174,14 @@ nav {
 /* Imagem do Modelo */
 .img-model {
     position: absolute;
-    top: 90vh;
+    top: 75vh;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 500;
-    height: 70rem;
+    height: 50rem;
+
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 
