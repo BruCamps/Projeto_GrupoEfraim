@@ -47,6 +47,8 @@ body {
     
 }
 
+
+
 h1 {
     font-size: clamp(1.8rem, 2.5vw, 2.8rem);
     margin-bottom: 5rem;
@@ -92,7 +94,7 @@ nav {
 .logo {
     width: 50px;
     height: 50px;
-    background-image: url(/IMGs/logo.jpg);
+    background-image: url();
     border-radius: 50%; /* Torna a logo redonda */
     background-size: cover;
     background-repeat: no-repeat;
@@ -111,27 +113,6 @@ nav {
     display: flex;
     overflow: hidden;
     margin-bottom: 2rem;
-}
-
-/* Gradiente Central */
-.gradient-circle {
-    width: 45rem;
-    height: 45rem;
-    filter: blur(5rem);
-    background: 
-        linear-gradient(
-            var(--clr-yellow-logo), 
-            var(--clr-red-logo), 
-            var(--clr-blue-logo)
-        ); 
-    border-radius: 50%; 
-    position: absolute;
-    top: 75vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Círculo vazado */
