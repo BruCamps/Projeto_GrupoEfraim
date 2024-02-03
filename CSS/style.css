@@ -10,6 +10,7 @@
     --clr-nav-font: white;
     --clr-background: white;
     --clr-body-font: #060E4F;
+    --clr-blue-500: #1021A4;
 }
 
 * {
@@ -86,7 +87,7 @@ nav {
     margin-left: 35px;
 }
 
-/* Cada Link da Nav */
+/* Links da Nav */
 .nav-link {
     text-decoration: none;
     color: white;
@@ -121,7 +122,6 @@ nav {
 }
 
 /* Elementos da Nav */
-
 .nav-item{
     margin-left: 40px;
 }
@@ -140,7 +140,7 @@ nav {
 /* ---- Header - Cabeçalho ---- */
 
 
-/* Seção do Header */
+/* Seção Cabeçalho */
 .header-section {
     background-image: url(../IMGs/SliceFundo.png);
     background-size: cover;
@@ -171,7 +171,7 @@ nav {
     border-radius: 50%;
 }
 
-/* Imagem do Modelo */
+/* Imagem do(a) Modelo */
 .img-model {
     position: absolute;
     top: 75vh;
@@ -188,7 +188,7 @@ nav {
 /* ---- About - Sobre ---- */
 
 
-/* Seção do Sobre */
+/* Seção Sobre */
 .about-section {
     display: flex;
     flex-direction: column;
@@ -198,7 +198,7 @@ nav {
     padding: 8rem 10rem 10rem 10rem;
 }
 
-/* Container do Sobre */
+/* Container - Sobre */
 .about-container {
     display: flex;
     justify-content: center;
@@ -209,13 +209,13 @@ nav {
     gap: 5rem;
 }
 
-/* Parágrafos do Sobre */
+/* Textos - Sobre */
 .about-text {
     font-size: 1.2rem;
     margin: auto;
 }
 
-/* Container das Imagens do Sobre */
+/* Container das Imagens - Sobre */
 .img-container {
     display: flex;
     width: 40rem;
@@ -225,12 +225,12 @@ nav {
     border-radius: .8rem;
 }
 
-/* Imagens do Sobre */
+/* Imagens - Sobre */
 .img-container img {
     width: 100%;
 }
 
-/* Container com Fundo Laranja */
+/* Container Laranja (Temporário) */
 .orange-bg {
     background: radial-gradient(#FE9900, #FF1901);
 }
@@ -239,16 +239,17 @@ nav {
 /* ---- Misters E Miss ---- */
 
 
-/* Seção dos Misters  */
+/* Seção Misters */
 .misters-section {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 10rem 10rem 10rem;
 }
 
-/* Container do Misters */
+/* Container - Misters */
 .misters-container {
     width: 100%;
     display: flex;
@@ -256,11 +257,141 @@ nav {
     align-items: center;
 }
 
-/* Cards do Carrossel */
-.carousel-card {
+/* Cards - Misters */
+.misters-card {
     padding: 10rem 8rem;
     margin: 2rem 1rem;
     background: #737373;
+    border-radius: .5rem;
+
+    &:nth-child(odd) {
+        background: var(--clr-yellow-logo);
+    }
+
+    &:nth-child(even) {
+        background: var(--clr-blue-500);
+    }
 }
+
+/* ---- Boards - Diretorias ---- */
+
+
+/* Seção Diretorias */
+.boards-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 10rem 10rem 10rem;
+}
+
+/* Container - Diretorias */
+.boards-container {
+    display: flex;
+}
+
+/* Cards - Diretorias */
+.board-card {
+    display: flex;
+    padding: 5rem 10rem;
+    margin: 2rem 1rem;
+    background: #737373;
+    border-radius: .5rem;
+
+    &:nth-child(odd) {
+        background: var(--clr-red-logo);
+    }
+
+    &:nth-child(even) {
+        background: var(--clr-blue-500);
+    }
+}
+
+/* Textos - Diretorias */
+.board-card p {
+    color: var(--clr-nav-font);
+    font-size: clamp(1.5rem, 7cqb, 3rem);
+}
+
+
+/* ---- Events - Eventos ---- */
+
+
+/* Seção Eventos */
+.events-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 10rem 10rem 10rem;
+}
+
+/* Container - Eventos */
+.events-container {
+    display: flex;
+}
+
+/* Cards - Eventos */
+.event-card {
+    display: flex;
+    padding: 5rem 10rem;
+    margin: 2rem 1rem;
+    border-radius: .5rem;
+
+    &:nth-child(odd) {
+        background: var(--clr-red-logo);
+    }
+
+    &:nth-child(even) {
+        background: var(--clr-yellow-logo);
+    }
+}
+
+/* Textos - Eventos */
+.event-card p {
+    color: var(--clr-nav-font);
+}
+
+
+/* ---- Partners - Parceiros ---- */
+
+
+/* Seção Parceiros */
+.partners-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem 10rem 10rem 10rem;
+}
+
+/* Container - Parceiros */
+.partners-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Marcas Parceiras */
+.brand {
+    padding: 3rem 6rem;
+    margin: 2rem 1rem;
+    background: #737373;
+    border-radius: .5rem;
+}
+
+
+/*  ---- Footer - Rodapé ----  */
+
+
+/* Seção Rodapé */
+.footer-section {
+    display: flex;
+    background: var(--clr-blue-logo);
+}
+
+
 
 
