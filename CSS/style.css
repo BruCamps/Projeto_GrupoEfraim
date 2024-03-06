@@ -1,18 +1,29 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Racing+Sans+One&family=Work+Sans:ital,wght@0,700;0,800;0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Racing+Sans+One&family=Work+Sans:ital,wght@0,700;0,800;0,900;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+/* ---- Base ---- */
+
+
+/* Variáveis para Padrões */
 :root {
     /* Paleta de Cores da Marca */
     --clr-yellow-logo: #FE9900;
     --clr-red-logo: #FF1901;
     --clr-blue-logo: #060E4F;
     
-    --clr-nav-font: white;
-    --clr-background: white;
+    /* Cores - Fontes */
+    --clr-bg: white;
+    --clr-white-font: white;
     --clr-body-font: #060E4F;
     --clr-blue-500: #1021A4;
+
+    @media (prefers-color-scheme: light) {
+        --clr-bg: black;
+        --clr-body-font: white;
+    }
 }
 
+/* Resetar Propriedades do Body */
 * {
     margin: 0;
     padding: 0;
@@ -21,46 +32,150 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    color: var(--clr-font);
     font-family: 'Poppins', sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-body {
-
-    background-color: var(--clr-background);
-    overflow-x: hidden;
-
+    
     &::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-        background-color: transparent; /* or add it to the track */
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #737373;
-        border-radius: 2px;
+        width: 2px;
+        background-color: rgba(207, 207, 207, 0.87);
     }
     
+    &::-webkit-scrollbar-thumb {
+       background: rgb(141, 141, 141);
+    }
+}
+
+/* HTML */
+html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+}
+
+/* Body - Conteúdo da Página */
+body {
+    scroll-behavior: smooth;
+    background-color: var(--clr-bg);
+    overflow-x: hidden;
 }
 
 
 
+/* Títulos de cada Seção */
 h1 {
-    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    font-size: clamp(5rem, 2.5vw, 1rem);
+    letter-spacing: 5px;
     margin-bottom: 5rem;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
+/* Para qualquer coisa :P */
 span {
     font-size: 2rem;
 }
 
+/* Imagens */
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    
+    &:not(.img-model, .img-container) {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.img-container img,.img-model img {
+    object-fit: fill;
+}
+
 h1, span, .about-text {
     color: var(--clr-body-font);
+}
+
+/* Scroll Watcher - Scroll de Visualização */
+.scroll-watcher {
+    height: 5px;
+    position: fixed;
+    top:0;
+    z-index: 10000;
+    background: var(--clr-blue-500);
+    width: 100%;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+}
+
+/* Container - Em comum com várias Seções */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+
+/* ---- Animations - Animações ---- */
+
+
+@media (prefers-reduced-motion: no-preference) {
+    
+    /* Animação - Surgir Imagens - Sobre */
+    @keyframes fade-in-imgs {
+        to { scale: 1; opacity: 1;}
+    }
+
+    /* Animação - Surgir Textos - Sobre */
+    @keyframes fade-in-side {
+        from { opacity: 0; transform: translateX(-1rem); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Container das Imagens - Sobre  */
+    .about-container > .img-container {
+        scale: .8;
+        opacity: 0;
+        animation: fade-in-imgs linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+    }
+
+    /* Container dos Textos - Sobre */
+    .about-container > .about-text {
+        animation: fade-in-side linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+        animation-duration: 2000s;
+    } 
+
+}
+
+/* Animação - Barra de Scroll */
+@keyframes scroll-watcher {
+    from {
+        background-color: var(--clr-yellow-logo);
+    }
+    50% {
+        background-color: var(--clr-red-logo);
+    }
+    to { 
+        scale: 1 1;
+        background-color: var(--clr-blue-500);
+    }
+}
+
+/* Reveal - Revela as seções */
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 2s ease;
+
+    &.active{
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 
@@ -71,6 +186,7 @@ h1, span, .about-text {
 nav {
     padding: 15px;
     display: flex;
+    background: transparent;
     justify-content: space-between;
     align-items: center;
     position: absolute;
@@ -90,9 +206,8 @@ nav {
 /* Links da Nav */
 .nav-link {
     text-decoration: none;
-    color: white;
+    color: var(--clr-white-font);
     font-size: 1.05rem;
-
     position: relative;
 
     &::before{
@@ -106,9 +221,9 @@ nav {
         left: 0;
         bottom: -5px;
 
-        transform-origin: right;
+        transform-origin: center;
         transform: scaleX(0);
-        transition: 0.3s ease-in-out;
+        transition: .3s ease-in-out;
     }
 
     &:hover::before{
@@ -116,9 +231,6 @@ nav {
         transform: scaleX(1);
     }
 
-    &:hover{
-        color: rgb(252, 248, 235);
-    }
 }
 
 /* Elementos da Nav */
@@ -142,46 +254,79 @@ nav {
 
 /* Seção Cabeçalho */
 .header-section {
-    background-image: url(../IMGs/SliceFundo.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    min-width: 100%;
+    background: no-repeat center/cover fixed url("/IMGs/SliceFundo.png");
+    aspect-ratio: 16/9;
+    width: 100%;
     height: 100vh;
+    overflow: hidden;
     position: relative;
     display: flex;
-    overflow: hidden;
-    margin-bottom: 2rem;
 }
 
-/* Círculo vazado */
+/* Círculos vazados */
 .stroke-circle {
-    width: 75rem;
-    height: 75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    filter: blur(.2rem);
     position: absolute;
-    top: 75vh; 
-    left: 50%;
     z-index: 25;
-    transform: translate(-50%, -50%);
+    top: 70vh;
     border: 1.5rem rgba(0, 0, 255, 0.192) solid;
     border-radius: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+/* Círculo Maior */
+.circle-2 {
+    width: 85rem;
+    height: 85rem;
+    border: 1.1rem rgba(0, 0, 255, 0.219) solid;
+    animation-delay: 300;
+}
+
+/* Círculo Menor */
+.circle-1 {
+    width: 75rem;
+    height: 75rem;  
+    border: 2rem rgba(0, 0, 255, 0.219) solid;
+    animation-delay: 200;
 }
 
 /* Imagem do(a) Modelo */
 .img-model {
     position: absolute;
-    top: 75vh;
+    top: 80vh;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 500;
-    height: 50rem;
+    height: 55rem;
+}
 
-    -webkit-user-drag: none;
-    user-select: none;
+/* Texto - Grupo Efraim */
+.corp-name {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 62vh;
+    left: 40%;
+    z-index: 600;
+    font-size: 5rem;
+    color: var(--clr-white-font);
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+    box-shadow: inset;
+    text-transform: uppercase;
+}
+
+/* Texto - Corporation */
+.corp {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 72vh;
+    left: 35%;
+    z-index: 600;
+    font-size: 2.5rem;
+    color: var(--clr-white-font);
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 
@@ -195,6 +340,7 @@ nav {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 2rem;
     padding: 8rem 10rem 10rem 10rem;
 }
 
@@ -204,6 +350,7 @@ nav {
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 50rem;
     height: 10rem;
     margin: 10rem 0;
     gap: 5rem;
@@ -213,6 +360,7 @@ nav {
 .about-text {
     font-size: 1.2rem;
     margin: auto;
+    color: #8f8f8f;
 }
 
 /* Container das Imagens - Sobre */
@@ -223,16 +371,13 @@ nav {
     padding: 3rem;
     background: radial-gradient(#1021A4, #060E4F);
     border-radius: .8rem;
-}
+    overflow: hidden;
 
-/* Imagens - Sobre */
-.img-container img {
-    width: 100%;
-}
+    /* Container Laranja (Temporário) */
+    &.orange-bg {
+        background: radial-gradient(#FE9900, #FF1901);
+    }
 
-/* Container Laranja (Temporário) */
-.orange-bg {
-    background: radial-gradient(#FE9900, #FF1901);
 }
 
 
@@ -246,30 +391,66 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 10rem 10rem 10rem;
+    padding-bottom: 10rem;
+}
+
+
+/* Container Carrossel - Misters  */
+.carousel-container {
+    width: 100%;
+    max-width: 50rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+
+}
+
+/* .carousel-container::-webkit-scrollbar-track {
+    height: 5px;
+    width: 100%;
+    background: white;
+}
+ */
+.carousel-container::-webkit-scrollbar {
+    height: 2px;
+    width: 10px;
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll(inline);
+
 }
 
 /* Container - Misters */
 .misters-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 20px);
+  /*   grid-template-columns: repeat(7, 1fr); */
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
+
 
 /* Cards - Misters */
 .misters-card {
-    padding: 10rem 8rem;
-    margin: 2rem 1rem;
+    width: 15rem;
+    height: 25rem;
     background: #737373;
     border-radius: .5rem;
-
-    &:nth-child(odd) {
-        background: var(--clr-yellow-logo);
-    }
-
-    &:nth-child(even) {
-        background: var(--clr-blue-500);
+    overflow: hidden;
+    display: flex;
+    scroll-snap-align: center;
+    
+    /* Imagens - Misters */
+    & img {
+        transition: all ease-in-out 1s;
+        cursor: pointer;
+        
+        
+        &:hover {
+            scale: 1.3;
+        }
     }
 }
 
@@ -283,37 +464,48 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0rem 10rem 10rem 10rem;
+    padding: 0 10rem 10rem 10rem;
 }
 
 /* Container - Diretorias */
 .boards-container {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 15px);
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* Cards - Diretorias */
 .board-card {
     display: flex;
-    padding: 5rem 10rem;
+    width: 15rem;
+    height: 10rem;
     margin: 2rem 1rem;
     background: #737373;
     border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
 
-    &:nth-child(odd) {
-        background: var(--clr-red-logo);
+    transition: all ease-in-out 1s;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+
+    /* Textos - Diretorias */
+    & p {
+        z-index: 1;
+        font-size: clamp(8rem, 7cqb, 3rem);
+        font-weight: 500;
+        text-transform: uppercase;
     }
 
-    &:nth-child(even) {
-        background: var(--clr-blue-500);
-    }
+    
 }
-
-/* Textos - Diretorias */
-.board-card p {
-    color: var(--clr-nav-font);
-    font-size: clamp(1.5rem, 7cqb, 3rem);
-}
-
 
 /* ---- Events - Eventos ---- */
 
@@ -325,7 +517,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0rem 10rem 10rem 10rem;
+    padding: 0 10rem 10rem 10rem;
 }
 
 /* Container - Eventos */
@@ -339,19 +531,12 @@ nav {
     padding: 5rem 10rem;
     margin: 2rem 1rem;
     border-radius: .5rem;
+    background: #737373;
 
-    &:nth-child(odd) {
-        background: var(--clr-red-logo);
+    /* Textos - Eventos */
+    & p {
+        color: white;
     }
-
-    &:nth-child(even) {
-        background: var(--clr-yellow-logo);
-    }
-}
-
-/* Textos - Eventos */
-.event-card p {
-    color: var(--clr-nav-font);
 }
 
 
@@ -365,16 +550,18 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0rem 10rem 10rem 10rem;
+    padding: 0 10rem 10rem 10rem;
 }
 
 /* Container - Parceiros */
 .partners-container {
     display: flex;
     flex-direction: column;
+    height: 35rem;
+    overflow-y: auto;
 }
 
-/* Marcas Parceiras */
+/* Marcas de Parcerias - Parceiros */
 .brand {
     padding: 3rem 6rem;
     margin: 2rem 1rem;
@@ -389,7 +576,6 @@ nav {
 /* Seção Rodapé */
 .footer-section {
     display: flex;
-    background: var(--clr-blue-logo);
 }
 
 
