@@ -93,20 +93,6 @@ h1, span, .about-text {
     color: var(--clr-body-font);
 }
 
-/* Scroll Watcher - Scroll de Visualização */
-.scroll-watcher {
-    height: 5px;
-    position: fixed;
-    top:0;
-    z-index: 10000;
-    background: var(--clr-blue-500);
-    width: 100%;
-    scale: 0 1;
-    transform-origin: left;
-    animation: scroll-watcher linear;
-    animation-timeline: scroll();
-}
-
 /* Container - Em comum com várias Seções */
 .container {
     display: flex;
@@ -151,19 +137,6 @@ h1, span, .about-text {
 
 }
 
-/* Animação - Barra de Scroll */
-@keyframes scroll-watcher {
-    from {
-        background-color: var(--clr-yellow-logo);
-    }
-    50% {
-        background-color: var(--clr-red-logo);
-    }
-    to { 
-        scale: 1 1;
-        background-color: var(--clr-blue-500);
-    }
-}
 
 /* Reveal - Revela as seções */
 .reveal {
@@ -411,6 +384,7 @@ nav {
     background: white;
 }
  */
+
 .carousel-container::-webkit-scrollbar {
     height: 2px;
     width: 10px;
@@ -418,7 +392,6 @@ nav {
     transform-origin: left;
     animation: scroll-watcher linear;
     animation-timeline: scroll(inline);
-
 }
 
 /* Container - Misters */
