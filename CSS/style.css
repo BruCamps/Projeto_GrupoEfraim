@@ -14,12 +14,16 @@
     /* Cores - Fontes */
     --clr-bg: white;
     --clr-white-font: white;
-    --clr-body-font: #060E4F;
+    --clr-body-font: #04092c;
     --clr-blue-500: #1021A4;
+    --clr-scrollbar-thumb: #535353;
+    --clr-scrollbar-bg: #c5c5c5;
 
-    @media (prefers-color-scheme: light) {
+    @media (prefers-color-scheme: dark) {
         --clr-bg: black;
         --clr-body-font: white;
+        --clr-scrollbar-bg: #818181;
+        --clr-scrollbar-thumb: #ffffff;
     }
 }
 
@@ -378,21 +382,17 @@ nav {
 
 }
 
-/* .carousel-container::-webkit-scrollbar-track {
-    height: 5px;
-    width: 100%;
-    background: white;
-}
- */
 
 .carousel-container::-webkit-scrollbar {
     height: 2px;
     width: 10px;
-    scale: 0 1;
-    transform-origin: left;
-    animation: scroll-watcher linear;
-    animation-timeline: scroll(inline);
+    background-color: var(--clr-scrollbar-bg);
 }
+
+.carousel-container::-webkit-scrollbar-thumb {
+   background: var(--clr-scrollbar-thumb);
+}
+
 
 /* Container - Misters */
 .misters-container {
